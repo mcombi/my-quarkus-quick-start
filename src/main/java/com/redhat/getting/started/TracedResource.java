@@ -18,7 +18,7 @@ import io.opentelemetry.api.trace.Span;
 
 import io.quarkus.logging.Log;
 
-@Path("/hello1")
+@Path("/hellooooo")
 public class TracedResource {
 
     @Context
