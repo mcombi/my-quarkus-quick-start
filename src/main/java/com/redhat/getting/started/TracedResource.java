@@ -36,7 +36,7 @@ public class TracedResource {
 
         String response = formatGreeting(name);
         span.setAttribute("response", response);
-
+        Log.info("Span info" + span.toString());
         return response;
     }
 
