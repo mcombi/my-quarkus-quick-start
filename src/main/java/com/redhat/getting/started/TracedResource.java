@@ -22,7 +22,7 @@ public class TracedResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
-        registry.counter("example.hello.count").increment();
+        registry.counter("hello.count").increment();
         LOG.info("hello");
         return "hello";
     }
