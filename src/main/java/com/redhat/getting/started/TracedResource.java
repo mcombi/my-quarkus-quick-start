@@ -2,6 +2,8 @@ package com.redhat.getting.started;
 
 import org.jboss.logging.Logger;
 
+import io.micrometer.core.annotation.Counted;
+import io.micrometer.core.annotation.Timed;
 import io.micrometer.core.instrument.MeterRegistry;
 
 import javax.ws.rs.GET;
@@ -21,6 +23,9 @@ public class TracedResource {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
+    @Counted(description = "How many prime checks have been performed.")
+    @Timed(description = "A measure of how long it takes to perform the primality test.")
+
     public String hello() {
         registry.counter("hello_count").increment();
         LOG.info("hello");
