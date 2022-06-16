@@ -8,4 +8,6 @@ public class Order {
         this.id=id;
         this.amount=amount;
     }
+
+    public Order(){};
 }
