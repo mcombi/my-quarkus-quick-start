@@ -38,12 +38,15 @@ public class OrdersResource {
         switch (order.type) {
             case  "wheel" :
                 registry.counter("orders_wheels_count").increment();
+                Log.info("wheel received");
                 break;
             case  "tyre" :
                 registry.counter("orders_tyres_count").increment();
+                Log.info("tyre received");
                 break;
             default:
                 registry.counter("orders_unknown_count").increment();
+                Log.error("unsopported item");
                 throw new RuntimeException("Unknow");
         }
     }
