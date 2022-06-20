@@ -25,7 +25,7 @@ public class OrdersResource {
         
         // Return an 202 - Accepted response.
         Log.info("request received: " + order.toString());
-        registry.counter("quick-start-orders").increment();
+        registry.counter("quick-start-orders-total").increment();
         sendOrder(order);
         return Response.accepted().build();
     }
@@ -37,15 +37,15 @@ public class OrdersResource {
 
         switch (order.type) {
             case  "wheel" :
-                registry.counter("orders_wheels_count").increment();
+                registry.counter("quick-start-orders_wheels_count").increment();
                 Log.info("wheel received");
                 break;
             case  "tyre" :
-                registry.counter("orders_tyres_count").increment();
+                registry.counter("quick-start-orders_tyres_count").increment();
                 Log.info("tyre received");
                 break;
             default:
-                registry.counter("orders_unknown_count").increment();
+                registry.counter("quick-start-orders_unsupported_count").increment();
                 Log.error("unsopported item");
                 throw new RuntimeException("Unknow");
         }
