@@ -21,7 +21,7 @@ public class OrdersResource {
 
     OrdersResource(MeterRegistry registry) {
         this.registry = registry;
-        orders=new ArrayList<>();
+       this.orders= new ArrayList<>();
     }
 
     @POST
@@ -35,8 +35,8 @@ public class OrdersResource {
     }
 
     @GET
-    public ArrayList<Order> getOrders(){
-        return orders;
+    public OrderAggregate getOrders(){
+        return new OrderAggregate(orders);
     }
 
     public void sendOrder(Order order){
