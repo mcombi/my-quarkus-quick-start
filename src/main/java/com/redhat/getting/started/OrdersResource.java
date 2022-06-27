@@ -36,6 +36,7 @@ public class OrdersResource {
 
     @GET
     public OrderAggregate getOrders(){
+        Log.info("Getting orders");
         return new OrderAggregate(orders);
     }
 
