@@ -1,5 +1,7 @@
 package com.redhat.getting.started;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -15,9 +17,11 @@ import io.quarkus.logging.Log;
 public class OrdersResource {
 
     private final MeterRegistry registry;
+    private ArrayList<Order> orders;
 
     OrdersResource(MeterRegistry registry) {
         this.registry = registry;
+        orders=new ArrayList<>();
     }
 
     @POST
@@ -30,6 +34,11 @@ public class OrdersResource {
         return Response.accepted().build();
     }
 
+    @GET
+    public ArrayList<Order> getOrders(){
+        return orders;
+    }
+
     public void sendOrder(Order order){
         Log.info("Order received");
 
@@ -39,10 +48,12 @@ public class OrdersResource {
             case  "wheel" :
                 registry.counter("quick-start-orders_wheels_count").increment();
                 Log.info("wheel received");
+                orders.add(order);
                 break;
             case  "tyre" :
                 registry.counter("quick-start-orders_tyres_count").increment();
                 Log.info("tyre received");
+                orders.add(order);
                 break;
             default:
                 registry.counter("quick-start-orders_unsupported_count").increment();
