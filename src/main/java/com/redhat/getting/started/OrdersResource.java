@@ -46,17 +46,17 @@ public class OrdersResource {
 
         switch (order.type) {
             case  "wheel" :
-                registry.counter("quick-start-orders_wheels_count").increment();
+                registry.counter("quick-start-orders-wheels-count").increment();
                 Log.info("wheel received");
                 orders.add(order);
                 break;
             case  "tyre" :
-                registry.counter("quick-start-orders_tyres_count").increment();
+                registry.counter("quick-start-orders-tyres-count").increment();
                 Log.info("tyre received");
                 orders.add(order);
                 break;
             default:
-                registry.counter("quick-start-orders_unsupported_count").increment();
+                registry.counter("quick-start-orders-unsupported-count").increment();
                 Log.error("unsopported item");
                 throw new RuntimeException("Unknow");
         }
