@@ -29,7 +29,7 @@ public class OrdersResource {
         
         // Return an 202 - Accepted response.
         Log.info("request received: " + order.toString());
-        registry.counter("quick-start-orders-total").increment();
+        registry.counter("quick_start_orders_total").increment();
         sendOrder(order);
         return Response.accepted().build();
     }
