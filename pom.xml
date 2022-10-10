@@ -69,6 +69,7 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-opentelemetry-exporter-otlp</artifactId>
     </dependency>
+    
   </dependencies>
   <build>
     <plugins>
