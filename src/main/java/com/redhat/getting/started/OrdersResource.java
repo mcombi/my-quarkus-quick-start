@@ -7,6 +7,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import io.micrometer.core.instrument.MeterRegistry;
 import io.quarkus.logging.Log;
@@ -15,6 +16,9 @@ import io.quarkus.logging.Log;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class OrdersResource {
+
+    @ConfigProperty(name = "cname")
+    public String custome;
 
     private final MeterRegistry registry;
     private ArrayList<Order> orders;
@@ -36,6 +40,7 @@ public class OrdersResource {
 
     @GET
     public OrderAggregate getOrders(){
+        
         Log.info("Getting orders");
         return new OrderAggregate(orders);
     }
