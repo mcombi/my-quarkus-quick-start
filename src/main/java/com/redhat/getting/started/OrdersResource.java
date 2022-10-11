@@ -17,9 +17,6 @@ import io.quarkus.logging.Log;
 @Produces(MediaType.APPLICATION_JSON)
 public class OrdersResource {
 
-    @ConfigProperty(name = "cname")
-    public String custome;
-
     private final MeterRegistry registry;
     private ArrayList<Order> orders;
 
