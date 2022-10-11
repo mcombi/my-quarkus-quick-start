@@ -3,7 +3,7 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 import java.util.ArrayList;
 
 public class OrderAggregate {
-    @ConfigProperty(name = "qs.customer.name")
+    @ConfigProperty(name = "cname")
     public String custome;
     public String customer;
     public long total;
