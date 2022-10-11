@@ -17,6 +17,9 @@ import io.quarkus.logging.Log;
 @Produces(MediaType.APPLICATION_JSON)
 public class OrdersResource {
 
+    @ConfigProperty(name = "qs.customer.name")
+    public String customer;
+
     private final MeterRegistry registry;
     private ArrayList<Order> orders;
 
@@ -37,9 +40,9 @@ public class OrdersResource {
 
     @GET
     public OrderAggregate getOrders(){
-        
+   
         Log.info("Getting orders");
-        return new OrderAggregate(orders);
+        return new OrderAggregate(orders,customer);
     }
 
     public void sendOrder(Order order){
