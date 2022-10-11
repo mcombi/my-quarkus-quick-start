@@ -2,12 +2,12 @@ package com.redhat.getting.started;
 
 import java.util.ArrayList;
 
-import javax.inject.Inject;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.redhat.getting.started.services.OrderService;
+
 import io.micrometer.core.instrument.MeterRegistry;
 import io.quarkus.logging.Log;
 
