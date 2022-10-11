@@ -12,7 +12,7 @@ public class OrderAggregate {
     public OrderAggregate(ArrayList<Order> orders){
         
         this.orders=orders;
-        if (custome!=null && !custome.isEmpty()){
+        if (custome==null || custome.isEmpty()){
             this.customer="DEFAULT";
         }
         else this.customer=custome;
