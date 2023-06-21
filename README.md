@@ -1,3 +1,3 @@
 # my-quarkus-quick-start
 
-Simple project
+Simple project to test
