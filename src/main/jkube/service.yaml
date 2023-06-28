@@ -1,0 +1,43 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: getting-started
+  namespace: cryostat
+  labels:
+    app: getting-started
+    group: com.redhat
+    provider: jkube
+    version: 2.1.3
+  annotations:
+    app.openshift.io/vcs-ref: main
+    app.openshift.io/vcs-uri: 'git@github.com:mcombi/my-quarkus-quick-start.git'
+    jkube.eclipse.org/git-branch: main
+    jkube.eclipse.org/git-commit: 1437571913c350342592bfc67127700581efbe17
+    jkube.eclipse.org/git-url: 'git@github.com:mcombi/my-quarkus-quick-start.git'
+    prometheus.io/path: /metrics
+    prometheus.io/port: '9779'
+    prometheus.io/scrape: 'true'
+spec:
+
+  ipFamilies:
+    - IPv4
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+    - name: jfr-jmx
+      protocol: TCP
+      port: 9091
+      targetPort: 9091
+  internalTrafficPolicy: Cluster
+
+  type: ClusterIP
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  selector:
+    app: getting-started
+    group: com.redhat
+    provider: jkube
+status:
+  loadBalancer: {}
