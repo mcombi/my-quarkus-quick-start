@@ -2,7 +2,7 @@
 
 Simple project to test pipelines
 
-The projectc dscscdsc
+The projectc test
 
 
 
