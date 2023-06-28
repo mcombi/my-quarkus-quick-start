@@ -2,7 +2,7 @@
 
 Simple project to test pipelines
 
-The projectc test
+The projectc test tekton
 
 
 
