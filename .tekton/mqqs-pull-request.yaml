@@ -4,16 +4,17 @@ metadata:
   annotations:
     build.appstudio.openshift.io/repo: https://github.com/mcombi/my-quarkus-quick-start?rev={{revision}}
     build.appstudio.redhat.com/commit_sha: '{{revision}}'
+    build.appstudio.redhat.com/pull_request_number: '{{pull_request_number}}'
     build.appstudio.redhat.com/target_branch: '{{target_branch}}'
     pipelinesascode.tekton.dev/max-keep-runs: "3"
-    pipelinesascode.tekton.dev/on-event: '[push]'
+    pipelinesascode.tekton.dev/on-event: '[pull_request]'
     pipelinesascode.tekton.dev/on-target-branch: '[main]'
   creationTimestamp: null
   labels:
-    appstudio.openshift.io/application: my-quarkus-quick-start
-    appstudio.openshift.io/component: my-quarkus-quick-start
+    appstudio.openshift.io/application: mqqs
+    appstudio.openshift.io/component: mqqs
     pipelines.appstudio.openshift.io/type: build
-  name: my-quarkus-quick-start-on-push
+  name: mqqs-on-pull-request
   namespace: rh-ee-mcombi-tenant
 spec:
   params:
@@ -21,8 +22,10 @@ spec:
     value: https://raw.githubusercontent.com/devfile-samples/devfile-sample-code-with-quarkus/main/src/main/docker/Dockerfile.jvm.staged
   - name: git-url
     value: '{{repo_url}}'
+  - name: image-expires-after
+    value: 5d
   - name: output-image
-    value: quay.io/redhat-user-workloads/rh-ee-mcombi-tenant/my-quarkus-quick-start/my-quarkus-quick-start:{{revision}}
+    value: quay.io/redhat-user-workloads/rh-ee-mcombi-tenant/mqqs/mqqs:on-pr-{{revision}}
   - name: path-context
     value: .
   - name: revision

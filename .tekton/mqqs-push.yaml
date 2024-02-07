@@ -10,10 +10,10 @@ metadata:
     pipelinesascode.tekton.dev/on-target-branch: '[main]'
   creationTimestamp: null
   labels:
-    appstudio.openshift.io/application: my-quarkus-quick-start
-    appstudio.openshift.io/component: my-quarkus-quick-start
+    appstudio.openshift.io/application: mqqs
+    appstudio.openshift.io/component: mqqs
     pipelines.appstudio.openshift.io/type: build
-  name: my-quarkus-quick-start-on-push
+  name: mqqs-on-push
   namespace: rh-ee-mcombi-tenant
 spec:
   params:
@@ -22,7 +22,7 @@ spec:
   - name: git-url
     value: '{{repo_url}}'
   - name: output-image
-    value: quay.io/redhat-user-workloads/rh-ee-mcombi-tenant/my-quarkus-quick-start/my-quarkus-quick-start:{{revision}}
+    value: quay.io/redhat-user-workloads/rh-ee-mcombi-tenant/mqqs/mqqs:{{revision}}
   - name: path-context
     value: .
   - name: revision
